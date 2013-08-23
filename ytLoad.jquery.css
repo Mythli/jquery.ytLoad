@@ -1,4 +1,4 @@
-.ytProgress {
+.ytLoad {
     position: fixed;
     z-index: 2147483647;
     top: 0;
@@ -12,7 +12,7 @@
 }
 
 
-.ytProgress dd, .ytProgress dt {
+.ytLoad dd, .ytLoad dt {
     position: absolute;
     top: 0;
     height: 2px;
@@ -25,14 +25,14 @@
     border-radius: 100%;
 }
 
-.ytProgress dt {
+.ytLoad dt {
     opacity: .6;
     width: 180px;
     right: -80px;
     clip: rect(-6px,90px,14px,-6px);
 }
 
-.ytProgress dd {
+.ytLoad dd {
     opacity: .6;
     width: 20px;
     right: 0;
