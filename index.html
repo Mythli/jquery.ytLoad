@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jquery.ytProgress demo</title>
+    <link href="ytprogress.jquery.css" rel="stylesheet" type="text/css">
+
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.transit.js"></script>
+    <script type="text/javascript" src="ytprogress.jquery.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            $.ytProgress();
+
+            $('#loadButton').click(function(){
+                $('#ajaxContents').load('ajax.html');
+            });
+        });
+    </script>
+    <style>
+    </style>
+</head>
+<body>
+    <input id="loadButton" type="submit" value="Load">
+
+    <div id="test" style="margin-top: 50px;">
+
+    </div>
+
+    <div id="ajaxContent">
+    </div>
+    <div id="ajaxContents">
+    </div>
+</body>
+</html>

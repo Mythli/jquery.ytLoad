@@ -1,0 +1,31 @@
+{
+    "name": "mloverlay",
+    "title": "jquery.mloverlay",
+    "description": "A simple, lightweight jQuery plugin for showing modal less overlays.",
+    "keywords": [
+        "overlay",
+        "lightweight",
+        "modal-less",
+        "popup",
+        "dialog"
+    ],
+    "version": "1.0.2",
+    "author": {
+        "name": "Tobias Anhalt",
+        "url": "http://mythli.net"
+    },
+    "licenses": [
+        {
+            "type": "Apache License",
+            "url": "https://github.com/Mythli/jquery.mloverlay/blob/master/LICENSE"
+        }
+    ],
+    "bugs": "https://github.com/Mythli/jquery.mloverlay/issues",
+    "homepage": "https://github.com/Mythli/jquery.mloverlay",
+    "docs": "https://github.com/Mythli/jquery.mloverlay",
+    "download": "https://github.com/Mythli/jquery.mloverlay",
+    "demo": "http://mloverlay.mythli.net",
+    "dependencies": {
+        "jquery": ">=1.5"
+    }
+}
