@@ -1,49 +1,86 @@
 (function ( $ ) {
     var PLUGIN_IDENTIFIER = 'ytLoad';
+    var settings = null;
+    var ajaxError = false;
 
     var methods = {
         init: function(options) {
-            var settings = $.extend({
+            settings = $.extend({
+                registerAjaxHandlers: true,
                 startPercentage: 30,
                 startDuration: 200,
                 completeDuration: 50,
                 fadeDelay: 200,
                 fadeDuration: 200,
-                progressBarId: PLUGIN_IDENTIFIER
+                progressBarId: PLUGIN_IDENTIFIER,
+                onStart: function() { },
+                onComplete: function() { },
+                onError: function() { }
             }, options);
 
-            $progressBar = null;
+            if(settings.registerAjaxHandlers) {
+                $(document).on('ajaxStart.'+PLUGIN_IDENTIFIER, function() {
+                    methods.start();
+                });
 
-            $(document).on('ajaxStart.'+PLUGIN_IDENTIFIER, function() {
+                $(document).on('ajaxComplete.'+PLUGIN_IDENTIFIER, function() {
+                    methods.complete();
+                });
+
+                $(document).on('ajaxError.'+PLUGIN_IDENTIFIER, function() {
+                    ajaxError = true;
+                });
+            }
+        },
+
+        start: function() {
+            $progressBar = $('#'+settings.progressBarId);
+            ajaxError = false;
+
+            if ($progressBar.length == 0) {
+                $('body').append('<div id="'+settings.progressBarId+'" class="'+settings.progressBarId+'"><dt></dt><dd></dd></div>');
                 $progressBar = $('#'+settings.progressBarId);
-                if ($progressBar.length == 0) {
-                    $('body').append('<div id="'+settings.progressBarId+'" class="'+settings.progressBarId+'"><dt></dt><dd></dd></div>');
-                    $progressBar = $('#'+settings.progressBarId);
-                }
+            }
 
-                $progressBar.transit({
-                   width: settings.startPercentage+'%'
-                }, settings.startDuration);
-            });
+            $progressBar.transit({
+                width: settings.startPercentage+'%'
+            }, settings.startDuration);
 
-            $(document).on('ajaxComplete.'+PLUGIN_IDENTIFIER, function() {
-                $progressBar.transit({
-                    width: '101%',
-                    complete: function() {
-                        $progressBar.delay(settings.fadeDelay);
-                        $progressBar.fadeOut({
-                          complete: function() {
-                              $progressBar.remove();
-                          }
-                        }, settings.fadeDuration);
+            settings.onStart();
+        },
+
+        complete: function() {
+            $progressBar.transit({
+                width: '101%',
+                complete: function() {
+                    if(ajaxError) {
+                        methods.error();
                     }
-                }, settings.completeDuration);
-            });
+                    $progressBar.delay(settings.fadeDelay);
+                    $progressBar.fadeOut({
+                        complete: function() {
+                            $progressBar.remove();
+                        }
+                    }, settings.fadeDuration);
+                }
+            }, settings.completeDuration);
+
+            settings.onComplete();
+        },
+
+        error: function() {
+            $progressBar = $('#'+settings.progressBarId);
+            $progressBar.addClass('error');
+
+            settings.onError();
         },
 
         destroy: function() {
-            $(document).off('ajaxStart.'+PLUGIN_IDENTIFIER);
-            $(document).off('ajaxComplete.'+PLUGIN_IDENTIFIER);
+            if(settings.registerAjaxHandlers) {
+                $(document).off('ajaxStart.'+PLUGIN_IDENTIFIER);
+                $(document).off('ajaxComplete.'+PLUGIN_IDENTIFIER);
+                $(document).off('ajaxError.'+PLUGIN_IDENTIFIER);
+            }
         }
     };
 

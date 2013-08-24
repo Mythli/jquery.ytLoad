@@ -1,6 +1,6 @@
 {
-    "name": "mloverlay",
-    "title": "jquery.mloverlay",
+    "name": "ytLoad",
+    "title": "jquery.ytLoad",
     "description": "A simple, lightweight jQuery plugin for showing modal less overlays.",
     "keywords": [
         "overlay",

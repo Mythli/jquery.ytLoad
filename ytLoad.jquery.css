@@ -10,7 +10,9 @@
     -webkit-border-radius: 1px;
     border-radius: 1px;
 }
-
+.ytLoad.error {
+    background: #C20A47;
+}
 
 .ytLoad dd, .ytLoad dt {
     position: absolute;
@@ -23,6 +25,13 @@
     -moz-border-radius: 100%;
     -webkit-border-radius: 100%;
     border-radius: 100%;
+}
+
+.ytLoad.error dd, .ytLoad.error dt {
+    -moz-box-shadow: #C20A47 1px 0 6px 1px;
+    -ms-box-shadow: #C20A47 1px 0 6px 1px;
+    -webkit-box-shadow: #C20A47 1px 0 6px 1px;
+    box-shadow: #C20A47 1px 0 6px 1px;
 }
 
 .ytLoad dt {
