@@ -19,11 +19,32 @@
         });
     </script>
     <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+            background-color: #EBEBEB;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        #topBar {
+            height: 25px;
+            padding-top: 7px;
+            padding-bottom: 8px;
+            padding-left: 15px;
+            background-color: #F1F1F1;
+        }
+
+        #ajaxContent {
+            width: 800px;
+            margin: auto;
+            margin-top: 15px;
+        }
     </style>
 </head>
 <body>
-    <input id="loadButton" type="submit" value="Load">
-
+    <div id="topBar">
+        <input id="loadButton" type="submit" value="Load">
+    </div>
     <div id="ajaxContent">
     </div>
 </body>
