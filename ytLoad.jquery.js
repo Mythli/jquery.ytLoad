@@ -59,13 +59,12 @@
                     $progressBar.delay(settings.fadeDelay);
                     $progressBar.fadeOut({
                         complete: function() {
+                            settings.onComplete();
                             $progressBar.remove();
                         }
                     }, settings.fadeDuration);
                 }
             }, settings.completeDuration);
-
-            settings.onComplete();
         },
 
         error: function() {

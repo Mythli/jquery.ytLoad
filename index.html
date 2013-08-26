@@ -1,51 +1,51 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>ytLoad demo</title>
-    <link href="ytLoad.jquery.css" rel="stylesheet" type="text/css">
+    <head>
+        <title>ytLoad demo</title>
+        <link href="ytLoad.jquery.css" rel="stylesheet" type="text/css">
 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="jquery.transit.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script type="text/javascript" src="jquery.transit.js"></script>
 
-    <script type="text/javascript" src="ytLoad.jquery.js"></script>
-    <script type="text/javascript">
+        <script type="text/javascript" src="ytLoad.jquery.js"></script>
+        <script type="text/javascript">
 
-        $(document).ready(function() {
-            $.ytLoad();
+            $(document).ready(function() {
+                $.ytLoad();
 
-            $('#loadButton').click(function(){
-                $('#ajaxContent').load('ajax.html');
+                $('#loadButton').click(function(){
+                    $('#ajaxContent').load('ajax.html');
+                });
             });
-        });
-    </script>
-    <style>
-        body {
-            margin: 0px;
-            padding: 0px;
-            background-color: #EBEBEB;
-            border-bottom: 1px solid #e8e8e8;
-        }
+        </script>
+        <style>
+            body {
+                margin: 0px;
+                padding: 0px;
+                background-color: #EBEBEB;
+                border-bottom: 1px solid #e8e8e8;
+            }
 
-        #topBar {
-            height: 25px;
-            padding-top: 7px;
-            padding-bottom: 8px;
-            padding-left: 15px;
-            background-color: #F1F1F1;
-        }
+            #topBar {
+                height: 25px;
+                padding-top: 7px;
+                padding-bottom: 8px;
+                padding-left: 15px;
+                background-color: #F1F1F1;
+            }
 
-        #ajaxContent {
-            width: 800px;
-            margin: auto;
-            margin-top: 15px;
-        }
-    </style>
-</head>
-<body>
-    <div id="topBar">
-        <input id="loadButton" type="submit" value="Load">
-    </div>
-    <div id="ajaxContent">
-    </div>
-</body>
+            #ajaxContent {
+                width: 800px;
+                margin: auto;
+                margin-top: 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="topBar">
+            <input id="loadButton" type="submit" value="Load">
+        </div>
+        <div id="ajaxContent">
+        </div>
+    </body>
 </html>
