@@ -1,7 +1,7 @@
 {
     "name": "ytLoad",
     "title": "jquery.ytLoad",
-    "description": "A simple, lightweight jQuery plugin to visualize ajax progress.",
+    "description": "A youtube inspired, simple, lightweight jQuery plugin to visualize ajax progress.",
     "keywords": [
         "effect",
         "youtube",
@@ -13,7 +13,7 @@
         "progressbar"
 
     ],
-    "version": "1.0.0",
+    "version": "1.0.2",
     "author": {
         "name": "Tobias Anhalt",
         "url": "http://mythli.net"
