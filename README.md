@@ -7,7 +7,7 @@ A youtube inspired, simple, lightweight jQuery plugin to visualize ajax progress
 
 ## Installation
 
-Include the default stylesheet:  
+Include the default stylesheet:
 ```html
 <link href="ytLoad.jquery.css" rel="stylesheet" type="text/css">
 ```
