@@ -16,6 +16,7 @@
     "version": "1.0.2",
     "author": {
         "name": "Tobias Anhalt",
+        "email": "github@mythli.net",
         "url": "http://mythli.net"
     },
     "licenses": [
