@@ -4,7 +4,7 @@
     var ajaxError;
 
     function injectProgressBar() {
-        $progressBar = $('#'+settings.progressBarId);
+        var $progressBar = $('#'+settings.progressBarId);
 
         if ($progressBar.length == 0) {
             $('body').append('<div id="'+settings.progressBarId+'" class="'+settings.progressBarId+'"><dt></dt><dd></dd></div>');
@@ -15,8 +15,10 @@
     }
 
     function completeProgressBar() {
-        settings.onComplete();
+        var $progressBar = $('#'+settings.progressBarId);
+
         $progressBar.remove();
+        settings.onComplete();
     }
 
     var methods = {
@@ -26,8 +28,8 @@
             settings = $.extend({
                 registerAjaxHandlers: true,
                 startPercentage: 30,
-                startDuration: 200,
-                completeDuration: 50,
+                startDuration: null,
+                completeDuration: 100,
                 fadeDelay: 200,
                 fadeDuration: 200,
                 progressBarId: PLUGIN_IDENTIFIER,
@@ -54,49 +56,55 @@
         },
 
         start: function() {
-            $progressBar = injectProgressBar();
+            var $progressBar = injectProgressBar();
             ajaxError = false;
 
-            $progressBar.transit({
-                width: settings.startPercentage+'%'
-            }, settings.startDuration);
-
+            methods.setProgress(settings.startPercentage, settings.startDuration);
             settings.onStart();
         },
 
         complete: function() {
-            $progressBar = injectProgressBar();
+            var $progressBar = injectProgressBar();
             methods.setProgress(100, settings.completeDuration, function() {
                 $progressBar.delay(settings.fadeDelay);
                 $progressBar.fadeOut({
-                    duration: settings.fadeDuration,
-                    complete: function() {
-                        completeProgressBar();
-                    }
+                    duration: settings.fadeDuration
                 });
             });
         },
 
         setProgress: function(progress, duration, finished) {
-            $progressBar = injectProgressBar();
+            var $progressBar = injectProgressBar();
             if(!duration) {
                 duration = progress * 5;
             }
             var width = (101 / 100) * progress;
             width = Math.round(width * 100) / 100;
 
+            if(width > 99) {
+                // TODO: Bug in jquery.transit?
+                var doubleCompleteHack = false;
+            }
+
             $progressBar.transit({
                 width: width+'%',
+                duration: duration,
                 complete: function() {
+                    if(width > 99) {
+                        if(doubleCompleteHack == true) {
+                            completeProgressBar();
+                        }
+                        doubleCompleteHack = true;
+                    }
                     if(finished) {
                         finished();
                     }
                 }
-            }, duration);
+            });
         },
 
         error: function() {
-            $progressBar = $('#'+settings.progressBarId);
+            var $progressBar = $('#'+settings.progressBarId);
             $progressBar.addClass('error');
 
             settings.onError();
