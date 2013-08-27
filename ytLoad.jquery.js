@@ -30,7 +30,7 @@
                 });
 
                 $(document).on('ajaxError.'+PLUGIN_IDENTIFIER, function() {
-                    ajaxError = true;
+                    methods.error();
                 });
             }
         },
