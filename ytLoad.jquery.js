@@ -26,7 +26,9 @@
                 });
 
                 $(document).on('ajaxComplete.'+PLUGIN_IDENTIFIER, function() {
-                    methods.complete();
+                    if($.active < 2) {
+                        methods.complete();
+                    }
                 });
 
                 $(document).on('ajaxError.'+PLUGIN_IDENTIFIER, function() {
@@ -52,24 +54,22 @@
         },
 
         complete: function() {
-            if($.active < 2 || settings.registerAjaxHandlers == false) {
-                $progressBar.transit({
-                    width: '101%',
-                    complete: function() {
-                        if(ajaxError) {
-                            methods.error();
-                        }
-                        $progressBar.delay(settings.fadeDelay);
-                        $progressBar.fadeOut({
-                            duration: settings.fadeDuration,
-                            complete: function() {
-                                settings.onComplete();
-                                $progressBar.remove();
-                            }
-                        });
+            $progressBar.transit({
+                width: '101%',
+                complete: function() {
+                    if(ajaxError) {
+                        methods.error();
                     }
-                }, settings.completeDuration);
-            }
+                    $progressBar.delay(settings.fadeDelay);
+                    $progressBar.fadeOut({
+                        duration: settings.fadeDuration,
+                        complete: function() {
+                            settings.onComplete();
+                            $progressBar.remove();
+                        }
+                    });
+                }
+            }, settings.completeDuration);
         },
 
         error: function() {
