@@ -7,7 +7,12 @@ A youtube inspired, simple, lightweight jQuery plugin to visualize ajax progress
 
 ## Installation
 
-Include [jquery.transit](http://ricostacruz.com/jquery.transit/) (for smooth CSS3 transitions) and the script *after* the jQuery library (unless you are packaging scripts somehow else):
+Include the default stylesheet:
+```html
+<link href="ytLoad.jquery.css" rel="stylesheet" type="text/css">
+```
+
+Include [jquery.transit](http://ricostacruz.com/jquery.transit/) (for smooth CSS3 transitions) and the script *after* jQuery (unless you are packaging scripts somehow else):
 ```html
 <script src="/path/to/jquery.transit.js"></script>
 <script src="/path/to/jquery.ytLoad.js"></script>
