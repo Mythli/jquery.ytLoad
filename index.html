@@ -35,6 +35,14 @@
                         });
                     },
 
+                    setProgress: function() {
+                        $.ytLoad({
+                            registerAjaxHandlers: false
+                        });
+
+                        $.ytLoad('setProgress', 50);
+                    },
+
                     callbacks: function() {
                         $.ytLoad({
                             onStart: function() {
@@ -99,6 +107,7 @@
                 <option value="basic">Basic</option>
                 <option value="manual">Manual Trigger</option>
                 <option value="customDurations">Custom Durations</option>
+                <option value="setProgress">Set Progress</option>
                 <option value="callbacks">Use Callbacks</option>
                 <option value="multipleRequests">Multiple Requests</option>
             </select>

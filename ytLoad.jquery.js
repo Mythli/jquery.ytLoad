@@ -3,6 +3,22 @@
     var settings;
     var ajaxError;
 
+    function injectProgressBar() {
+        $progressBar = $('#'+settings.progressBarId);
+
+        if ($progressBar.length == 0) {
+            $('body').append('<div id="'+settings.progressBarId+'" class="'+settings.progressBarId+'"><dt></dt><dd></dd></div>');
+            $progressBar = $('#'+settings.progressBarId);
+        }
+
+        return $progressBar;
+    }
+
+    function completeProgressBar() {
+        settings.onComplete();
+        $progressBar.remove();
+    }
+
     var methods = {
         init: function(options) {
             ajaxError = false;
@@ -38,13 +54,8 @@
         },
 
         start: function() {
-            $progressBar = $('#'+settings.progressBarId);
+            $progressBar = injectProgressBar();
             ajaxError = false;
-
-            if ($progressBar.length == 0) {
-                $('body').append('<div id="'+settings.progressBarId+'" class="'+settings.progressBarId+'"><dt></dt><dd></dd></div>');
-                $progressBar = $('#'+settings.progressBarId);
-            }
 
             $progressBar.transit({
                 width: settings.startPercentage+'%'
@@ -54,22 +65,34 @@
         },
 
         complete: function() {
-            $progressBar.transit({
-                width: '101%',
-                complete: function() {
-                    if(ajaxError) {
-                        methods.error();
+            $progressBar = injectProgressBar();
+            methods.setProgress(100, settings.completeDuration, function() {
+                $progressBar.delay(settings.fadeDelay);
+                $progressBar.fadeOut({
+                    duration: settings.fadeDuration,
+                    complete: function() {
+                        completeProgressBar();
                     }
-                    $progressBar.delay(settings.fadeDelay);
-                    $progressBar.fadeOut({
-                        duration: settings.fadeDuration,
-                        complete: function() {
-                            settings.onComplete();
-                            $progressBar.remove();
-                        }
-                    });
+                });
+            });
+        },
+
+        setProgress: function(progress, duration, finished) {
+            $progressBar = injectProgressBar();
+            if(!duration) {
+                duration = progress * 5;
+            }
+            var width = (101 / 100) * progress;
+            width = Math.round(width * 100) / 100;
+
+            $progressBar.transit({
+                width: width+'%',
+                complete: function() {
+                    if(finished) {
+                        finished();
+                    }
                 }
-            }, settings.completeDuration);
+            }, duration);
         },
 
         error: function() {
