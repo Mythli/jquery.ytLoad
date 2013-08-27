@@ -11,11 +11,51 @@
         <script type="text/javascript">
 
             $(document).ready(function() {
-                $.ytLoad();
+                var examples = {
+                    basic: function() {
+                        $.ytLoad();
+                    },
+
+                    manual: function() {
+                        $.ytLoad({
+                            registerAjaxHandlers: false
+                        });
+                        $.ytLoad('start');
+                        $.ytLoad('complete');
+                    },
+
+                    customDurations: function() {
+                        $.ytLoad({
+                            startPercentage: 50,
+                            startDuration: 2000,
+                            completeDuration: 500,
+                            fadeDelay: 2000,
+                            fadeDuration: 2000
+                        });
+                    },
+
+                    callbacks: function() {
+                        $.ytLoad({
+                            onStart: function() {
+                                alert('Started!');
+                            },
+                            onComplete: function() {
+                                alert('Complete!');
+                            }
+                        });
+                    }
+                };
 
                 $('#loadButton').click(function(){
                     $('#ajaxContent').load('ajax.html');
                 });
+
+                $('#usageType').change(function() {
+                    $.ytLoad('destroy');
+                    examples[$(this).val()]();
+                });
+
+                examples.basic();
             });
         </script>
         <style>
@@ -37,7 +77,7 @@
                 float: right;
             }
 
-            #ajaxContent {
+            #ajaxContentContainer {
                 width: 800px;
                 margin: auto;
                 margin-top: 15px;
@@ -46,6 +86,12 @@
     </head>
     <body>
         <div id="topBar">
+            <select id="usageType" name="usageType">
+                <option value="basic">Basic</option>
+                <option value="manual">Manual Trigger</option>
+                <option value="customDurations">Custom Durations</option>
+                <option value="callbacks">Use Callbacks</option>
+            </select>
             <input id="loadButton" type="submit" value="Load">
             <div id="socialCodingButtons">
                 <iframe src="http://ghbtns.com/github-btn.html?user=Mythli&repo=jquery.ytload&type=watch&count=true"
@@ -56,7 +102,9 @@
                         allowtransparency="true" frameborder="0" scrolling="0" width="140" height="20"></iframe>
             </div>
         </div>
-        <div id="ajaxContent">
+        <div id="ajaxContentContainer">
+            <div id="ajaxContent">
+            </div>
         </div>
     </body>
 </html>
