@@ -82,7 +82,7 @@
             width = Math.round(width * 100) / 100;
 
             if(width > 99) {
-                // TODO: Bug in jquery.transit?
+                // TODO: Bug in jquery.transit? Further research needed to submit bug report.
                 var doubleCompleteHack = false;
             }
 
@@ -115,6 +115,11 @@
                 $(document).off('ajaxStart.'+PLUGIN_IDENTIFIER);
                 $(document).off('ajaxComplete.'+PLUGIN_IDENTIFIER);
                 $(document).off('ajaxError.'+PLUGIN_IDENTIFIER);
+            }
+            var $progressBar = $('#'+settings.progressBarId);
+
+            if ($progressBar.length == 0) {
+                $progressBar.remove();
             }
         }
     };
