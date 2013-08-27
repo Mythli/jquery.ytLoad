@@ -82,7 +82,7 @@
             width = Math.round(width * 100) / 100;
 
             if(width > 99) {
-                // TODO: Bug in jquery.transit? Further research needed to submit bug report.
+                // TODO: Bug in jquery.transit? Further research needed to submit proper bug report.
                 var doubleCompleteHack = false;
             }
 
