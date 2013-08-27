@@ -118,7 +118,7 @@
             }
             var $progressBar = $('#'+settings.progressBarId);
 
-            if ($progressBar.length == 0) {
+            if ($progressBar.length != 0) {
                 $progressBar.remove();
             }
         }
