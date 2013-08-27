@@ -1,10 +1,12 @@
 (function ( $ ) {
     var PLUGIN_IDENTIFIER = 'ytLoad';
-    var settings = null;
-    var ajaxError = false;
+    var settings;
+    var ajaxError;
 
     var methods = {
         init: function(options) {
+            ajaxError = false;
+
             settings = $.extend({
                 registerAjaxHandlers: true,
                 startPercentage: 30,
@@ -50,22 +52,24 @@
         },
 
         complete: function() {
-            $progressBar.transit({
-                width: '101%',
-                complete: function() {
-                    if(ajaxError) {
-                        methods.error();
-                    }
-                    $progressBar.delay(settings.fadeDelay);
-                    $progressBar.fadeOut({
-                        duration: settings.fadeDuration,
-                        complete: function() {
-                            settings.onComplete();
-                            $progressBar.remove();
+            if($.active < 2 || settings.registerAjaxHandlers == false) {
+                $progressBar.transit({
+                    width: '101%',
+                    complete: function() {
+                        if(ajaxError) {
+                            methods.error();
                         }
-                    });
-                }
-            }, settings.completeDuration);
+                        $progressBar.delay(settings.fadeDelay);
+                        $progressBar.fadeOut({
+                            duration: settings.fadeDuration,
+                            complete: function() {
+                                settings.onComplete();
+                                $progressBar.remove();
+                            }
+                        });
+                    }
+                }, settings.completeDuration);
+            }
         },
 
         error: function() {

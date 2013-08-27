@@ -44,6 +44,14 @@
                                 alert('Complete!');
                             }
                         });
+                    },
+
+                    multipleRequests: function() {
+                        $.ytLoad();
+
+                        for(i=0; i < 2000; i++) {
+                            $('#ajaxContent').load('ajax.html');
+                        }
                     }
                 };
 
@@ -92,6 +100,7 @@
                 <option value="manual">Manual Trigger</option>
                 <option value="customDurations">Custom Durations</option>
                 <option value="callbacks">Use Callbacks</option>
+                <option value="multipleRequests">Multiple Requests</option>
             </select>
             <input id="loadButton" type="submit" value="Load">
             <div id="socialCodingButtons">
