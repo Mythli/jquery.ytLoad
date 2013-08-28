@@ -22,10 +22,10 @@
 
     function setProgress(progress, duration, finished) {
         var $progressBar = injectProgressBar();
-        barProgress = progress;
         if(!duration) {
-            duration = progress * 8;
+            duration = (progress - barProgress) * 8;
         }
+        barProgress = progress;
         var width = (101 / 100) * progress;
         width = Math.round(width * 100) / 100;
 
