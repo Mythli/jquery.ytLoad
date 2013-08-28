@@ -59,7 +59,7 @@ Number. Sets how long the loading bar should be shown after it reached 100 perce
 **fadeDuration** *= 200*  
 Number. Sets how much time it should take to fade the loading bar.
 
-**durationSeed** *= 50*
+**durationSeed** *= 50*  
 Number. Sets how much time the progress animation takes by default. The seed is used to calculate the duration (durationSeed * progress).
 
 ### Functions
