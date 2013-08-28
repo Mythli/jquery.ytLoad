@@ -65,7 +65,7 @@ Number. Sets how much time the progress animation takes by default. The seed is 
 ### Functions
 
 **progress** ``$.ytLoad('progress', progress, duration, finished);``   
-If no parameters are specified the actual progress is returned. If parameters are specified progress sets the actual progress of the loading bar. The **progress** paramater determines how much progress is set (0-100). **The duration** parameter sets how much time the progress animation should take. If no duration is specified the duration is calculated. The **finished** parameter is a callback that is executed after the animation.
+If no parameters are specified the actual progress is returned. If parameters are specified progress sets the actual progress of the loading bar. The **progress** parameter determines how much progress is set (0-100). **The duration** parameter sets how much time the progress animation should take. If no duration is specified the duration is calculated. The **finished** parameter is a callback that is executed after the animation.
 
 **start** ``$.ytLoad('start');``  
 Shows the loading bar and starts the first progress push.  
