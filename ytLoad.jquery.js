@@ -29,22 +29,29 @@
         var width = (101 / 100) * progress;
         width = Math.round(width * 100) / 100;
 
+        // TODO: Is this a jquery.transit bug? Research error cause further and fill out proper bug report.
+        var doubleCompletePrevention = false;
+
         $progressBar.transit({
             width: width+'%',
             duration: duration,
             complete: function() {
-                if(width > 99) {
-                    $progressBar.delay(settings.fadeDelay);
-                    $progressBar.fadeOut({
-                        duration: settings.fadeDuration,
-                        complete: function() {
-                            $progressBar.remove();
-                        }
-                    });
-                    settings.onComplete();
-                }
-                if(finished) {
-                    finished();
+                if(doubleCompletePrevention) {
+                    if(width > 99) {
+                        $progressBar.delay(settings.fadeDelay);
+                        $progressBar.fadeOut({
+                            duration: settings.fadeDuration,
+                            complete: function() {
+                                $progressBar.remove();
+                            }
+                        });
+                        settings.onComplete();
+                    }
+                    if(finished) {
+                        finished();
+                    }
+                } else {
+                    doubleCompletePrevention = true;
                 }
             }
         });
