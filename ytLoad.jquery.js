@@ -23,7 +23,7 @@
     function setProgress(progress, duration, finished) {
         var $progressBar = injectProgressBar();
         if(!duration) {
-            duration = (progress - barProgress) * 8;
+            duration = (progress - barProgress) * settings.durationSeed;
         }
         barProgress = progress;
         var width = (101 / 100) * progress;
@@ -63,6 +63,7 @@
                 fadeDelay: 200,
                 fadeDuration: 200,
                 progressBarId: PLUGIN_IDENTIFIER,
+                durationSeed: 8,
                 onStart: function() { },
                 onComplete: function() { },
                 onError: function() { }
