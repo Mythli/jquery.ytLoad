@@ -20,7 +20,7 @@
                         $.ytLoad({
                             registerAjaxHandlers: false
                         });
-                        $.ytLoad('start');;
+                        $.ytLoad('start');
                         $.ytLoad('complete');
                         $.ytLoad('error');
                     },
@@ -40,9 +40,9 @@
                             registerAjaxHandlers: false
                         });
 
-                        $.ytLoad('setProgress', 50);
-                        $(document).delay(500);
-                        $.ytLoad('setProgress', 100);
+                        $.ytLoad('progress', 50);
+                        alert($.ytLoad('progress'));
+                        $.ytLoad('progress', 100);
                     },
 
                     callbacks: function() {

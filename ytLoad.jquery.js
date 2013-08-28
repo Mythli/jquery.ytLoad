@@ -2,6 +2,8 @@
     var PLUGIN_IDENTIFIER = 'ytLoad';
     var settings;
     var ajaxError;
+    var barProgress;
+
 
     function injectProgressBar() {
         var $progressBar = $('#'+settings.progressBarId);
@@ -14,9 +16,44 @@
         return $progressBar;
     }
 
+    function getProgress() {
+        return barProgress;
+    }
+
+    function setProgress(progress, duration, finished) {
+        var $progressBar = injectProgressBar();
+        barProgress = progress;
+        if(!duration) {
+            duration = progress * 8;
+        }
+        var width = (101 / 100) * progress;
+        width = Math.round(width * 100) / 100;
+
+        $progressBar.transit({
+            width: width+'%',
+            duration: duration,
+            complete: function() {
+                if(width > 99) {
+                    $progressBar.delay(settings.fadeDelay);
+                    $progressBar.fadeOut({
+                        duration: settings.fadeDuration,
+                        complete: function() {
+                            $progressBar.remove();
+                        }
+                    });
+                    settings.onComplete();
+                }
+                if(finished) {
+                    finished();
+                }
+            }
+        });
+    }
+
     var methods = {
         init: function(options) {
             ajaxError = false;
+            progress = 0;
 
             settings = $.extend({
                 registerAjaxHandlers: true,
@@ -48,46 +85,25 @@
             }
         },
 
-        setProgress: function(progress, duration, finished) {
-            var $progressBar = injectProgressBar();
-            if(!duration) {
-                duration = progress * 8;
+        progress: function(progress, duration, finished) {
+            if(!progress) {
+                return getProgress();
+            } else {
+                setProgress(progress, duration, finished);
             }
-            var width = (101 / 100) * progress;
-            width = Math.round(width * 100) / 100;
-
-            $progressBar.transit({
-                width: width+'%',
-                duration: duration,
-                complete: function() {
-                    if(width > 99) {
-                        $progressBar.delay(settings.fadeDelay);
-                        $progressBar.fadeOut({
-                            duration: settings.fadeDuration,
-                            complete: function() {
-                                $progressBar.remove();
-                            }
-                        });
-                        settings.onComplete();
-                    }
-                    if(finished) {
-                        finished();
-                    }
-                }
-            });
         },
 
         start: function() {
             var $progressBar = injectProgressBar();
             ajaxError = false;
 
-            methods.setProgress(settings.startPercentage, settings.startDuration);
+            methods.progress(settings.startPercentage, settings.startDuration);
             settings.onStart();
         },
 
         complete: function() {
             var $progressBar = injectProgressBar();
-            methods.setProgress(100, settings.completeDuration);
+            methods.progress(100, settings.completeDuration);
         },
 
         error: function() {
@@ -103,8 +119,8 @@
                 $(document).off('ajaxComplete.'+PLUGIN_IDENTIFIER);
                 $(document).off('ajaxError.'+PLUGIN_IDENTIFIER);
             }
-            var $progressBar = $('#'+settings.progressBarId);
 
+            var $progressBar = $('#'+settings.progressBarId);
             if ($progressBar.length != 0) {
                 $progressBar.remove();
             }
