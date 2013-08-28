@@ -23,8 +23,8 @@ in Internet Explorer on Windows 7 for instance (because of the wrong MIME type).
 
 ## Features
 
-- Developer friendly - Use progress to set the progress of the loading bar or disable ajax progress visualization at all and just use it as a progress bar.
-- Developer friendly - Progress of multiple simultanous ajax requests is visualized
+- Developer friendly - Use progress to set the current progress of the loading bar or disable ajax visualization at all and just use it as a progress bar.
+- Developer friendly - Progress of multiple simultaneous ajax requests is visualized
 - Developer friendly - Extensible through callbacks to make anything possible
 - Designer friendly - Use *your* CSS for Layout and Styling
 - Translator/i18n friendly - No hardcoded English strings
@@ -58,6 +58,9 @@ Number. Sets how long the loading bar should be shown after it reached 100 perce
 
 **fadeDuration** *= 200*  
 Number. Sets how much time it should take to fade the loading bar.
+
+**durationSeed** *= 50*
+Number. Sets how much time the progress animation takes by default. The seed is used to calculate the duration (durationSeed * progress).
 
 ### Functions
 
