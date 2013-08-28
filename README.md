@@ -23,6 +23,8 @@ in Internet Explorer on Windows 7 for instance (because of the wrong MIME type).
 
 ## Features
 
+- Developer friendly - Use progress to set the progress of the loading bar or disable ajax progress visualization at all and just use it as a progress bar.
+- Developer friendly - Progress of multiple simultanous ajax requests is visualized
 - Developer friendly - Extensible through callbacks to make anything possible
 - Designer friendly - Use *your* CSS for Layout and Styling
 - Translator/i18n friendly - No hardcoded English strings
@@ -59,11 +61,14 @@ Number. Sets how much time it should take to fade the loading bar.
 
 ### Functions
 
+**progress** ``$.ytLoad('progress', progress, duration, finished);``   
+If no parameters are specified the actual progress is returned. If parameters are specified progress sets the actual progress of the loading bar. The **progress** paramater determines how much progress is set (0-100). **The duration** parameter sets how much time the progress animation should take. If no duration is specified the duration is calculated. The **finished** parameter is a callback that is executed after the animation.
+
 **start** ``$.ytLoad('start');``  
 Shows the loading bar and starts the first progress push.  
 
 **complete** ``$.ytLoad('complete');``   
-Starts the remaining progress push and hides the loading bar.  
+Starts the remaining progress push and hides the loading bar.
 
 **error** ``$.ytLoad('error');``  
 Applies error style to the loading bar.
