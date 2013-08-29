@@ -90,6 +90,10 @@ Called when the loading bar finished progress visualization.
 **onError**  *function(overlay)*  
 Called when the loading bar enters error state(failed ajax calls, manual call).
 
+### Questions?
+
+Feel free to ask the [creator](mailto:github@mythli.net). Usually I respond oin the same or the next day. 
+
 ### Acknowledgements
 
 Many thanks to [ynh](http://blog.ynh.io/2013/05/24/rebuild-youtubes-progress-bar.html) for extracting the css part from youtube.
