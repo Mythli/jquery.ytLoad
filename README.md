@@ -92,7 +92,7 @@ Called when the loading bar enters error state(failed ajax calls, manual call).
 
 ### Questions?
 
-Feel free to ask the [creator](mailto:github@mythli.net). Usually I respond oin the same or the next day. 
+Feel free to ask the [creator](mailto:github@mythli.net). Usually I respond on the same or the next day. 
 
 ### Acknowledgements
 © 2013, Tobias Anhalt. Released under the [Apache License](https://github.com/Mythli/jquery.ytLoad/blob/master/LICENSE).
@@ -101,5 +101,5 @@ Many thanks to [ynh](http://blog.ynh.io/2013/05/24/rebuild-youtubes-progress-bar
 
 ### Competitors
 
-I wrote this plugin because I couldn't find an existing one. But in the retrospect I found out that there was an existing one. However, this plugin was designed with completely different design decisions.
+I wrote this plugin because I couldn't find an existing youtube likle loading bar. But in the retrospect I found out that there was an existing one. However, this plugin was designed with completely different design decisions.
 Therefore it fundamentally differs in certain aspects. A small comparison: On the one side there is [nprogress](http://ricostacruz.com/nprogress/) which focuses more on the parts of being a progress bar. On the other side there is ytLoad which focuses more on visualizing ajax progress. Therefore it has build in support for ajax event handlers and can visualize multiple simultaneuous ajax requests by default. Beyond that the flexibility for progress bar like behaviour is also supported.
