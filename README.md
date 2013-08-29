@@ -90,9 +90,9 @@ Called when the loading bar finished progress visualization.
 **onError**  *function(overlay)*  
 Called when the loading bar enters error state(failed ajax calls, manual call).
 
-### Questions?
+### Questions, Feedback or Criticism?
 
-Feel free to ask the [creator](mailto:github@mythli.net). Usually I respond on the same or the next day. 
+Feel free to contact the [creator](mailto:github@mythli.net). Usually I respond on the same or the next day. 
 
 ### Acknowledgements
 © 2013, Tobias Anhalt. Released under the [Apache License](https://github.com/Mythli/jquery.ytLoad/blob/master/LICENSE).
