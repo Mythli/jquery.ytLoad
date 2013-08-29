@@ -90,7 +90,7 @@ Called when the loading bar finished progress visualization.
 **onError**  *function(overlay)*  
 Called when the loading bar enters error state(failed ajax calls, manual call).
 
-### Questions, Feedback or Criticism?
+### Questions, Suggestions or Criticism?
 
 Feel free to contact the [creator](mailto:github@mythli.net). Usually I respond on the same or the next day. 
 
