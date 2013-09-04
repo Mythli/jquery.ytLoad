@@ -59,7 +59,7 @@ Number. Sets how long the loading bar should be shown after it reached 100 perce
 **fadeDuration** *= 200*  
 Number. Sets how much time it should take to fade the loading bar.
 
-**durationSeed** *= 50*  
+**durationSeed** *= 5*  
 Number. Sets how much time the progress animation takes by default. The seed is used to calculate the duration (durationSeed * progress).
 
 ### Functions
@@ -89,3 +89,17 @@ Called when the loading bar finished progress visualization.
 
 **onError**  *function(overlay)*  
 Called when the loading bar enters error state(failed ajax calls, manual call).
+
+### Questions, Suggestions or Criticism?
+
+Feel free to contact the [creator](mailto:github@mythli.net). Usually I respond on the same or the next day. 
+
+### Acknowledgements
+© 2013, Tobias Anhalt. Released under the [Apache License](https://github.com/Mythli/jquery.ytLoad/blob/master/LICENSE).
+
+Many thanks to [ynh](http://blog.ynh.io/2013/05/24/rebuild-youtubes-progress-bar.html) for extracting the css part from youtube.
+
+### Competitors
+
+I wrote this plugin because I couldn't find an existing youtube likle loading bar plugin. In the retrospect I found out that there was one. However, this plugin was designed with completely different design decisions.
+Therefore it fundamentally differs in certain aspects. A small comparison: On the one side there is [nprogress](http://ricostacruz.com/nprogress/) which focuses more on the parts of being a progress bar. On the other side there is [ytLoad](http://ytload.mythli.net) which focuses more on visualizing ajax progress. Therefore it has build in support for ajax event handlers and can visualize multiple simultaneuous ajax requests by default. Beyond that the flexibility for progress bar like behaviour is also supported.
