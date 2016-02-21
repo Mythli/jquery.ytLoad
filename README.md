@@ -3,6 +3,8 @@ jquery.ytLoad
 
 A youtube inspired, simple, lightweight jQuery plugin to visualize ajax progress.
 
+## This Plugin is not maintained anymore. For an alternative see: http://ricostacruz.com/nprogress/
+
 [Try it out now!](http://ytload.mythli.net)
 
 ## Installation
